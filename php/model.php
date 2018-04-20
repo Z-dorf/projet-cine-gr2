@@ -26,7 +26,7 @@ function getMovies(){
         $genres = $stg->fetchAll();
 
         // on stock les genres récupérés dans le tableau précédents
-        $arrayMovies[$movie]['genres'] = $genres;
+        $arrayMovies[$movie]['genre'] = $genres;
         
     }
     
