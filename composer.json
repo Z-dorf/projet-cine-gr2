@@ -1,14 +1,11 @@
 {
-<<<<<<< HEAD
-=======
     "name": "test/twig",
     "authors": [
         {
-            "name": "Chap-z",
-            "email": "cha.lacroix@hotmail.Fr"
+            "name": "Z-dorf",
+            "email": "sebastian.z@codeur.online"
         }
     ],
->>>>>>> 888d98d126732a9138949e8b889be12e0d85fcbc
     "require": {
         "twig/twig": "^2.0"
     }
