@@ -2,7 +2,9 @@
 
 include '../php/model.php';
 
-echo 'coucou';
+getMovies();
+
+var_dump($arrayMovies);
 
 
 ?>

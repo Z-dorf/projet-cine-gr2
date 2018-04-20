@@ -1,9 +1,7 @@
 <?php 
 
-$dbo = new PDO('mysql:host=127.0.0.1;dbname=allo_cine', 'root', 'root');
-
 function getMovies(){
-
+    $dbo = new PDO('mysql:host=127.0.0.1;dbname=allo_cine', 'root', 'root');
     $arrayMovies = [];
 
     $stm = $dbo->prepare('SELECT titre_f, id_f FROM films');
