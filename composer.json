@@ -1,11 +1,4 @@
 {
-    "name": "test/twig",
-    "authors": [
-        {
-            "name": "Z-dorf",
-            "email": "sebastian.z@codeur.online"
-        }
-    ],
     "require": {
         "twig/twig": "^2.0"
     }
