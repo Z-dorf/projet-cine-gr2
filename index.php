@@ -1,5 +1,5 @@
 <?php
-
+/*
 require 'vendor/autoload.php';
 
 //Rounting
@@ -35,7 +35,7 @@ switch ($page) { //routeur
     break;
 }
 
-/* if ($page === 'home') {
+ if ($page === 'home') {
     echo $twig->render('home.twig', ['person' => [
 
         'name' => 'Napo',
