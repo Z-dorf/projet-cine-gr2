@@ -2,9 +2,9 @@
 
 include '../php/model.php';
 
-getMovies();
+$movies = getMovies();
 
-var_dump($arrayMovies);
+var_dump($movies);
 
 
 ?>

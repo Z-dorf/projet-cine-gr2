@@ -1,6 +1,7 @@
 <?php 
 
 function getMovies(){
+    
     $dbo = new PDO('mysql:host=127.0.0.1;dbname=allo_cine', 'root', 'root');
     $arrayMovies = [];
 
@@ -10,7 +11,7 @@ function getMovies(){
     $movies = $stm->fetchAll();
     $nbMovies = count($movies);
 
-    // premièrement on boucle sur nos films
+    //on boucle sur nos films
     foreach ($movies as $key => $row) {
 
         // on stock dans un tableau le titre du film
