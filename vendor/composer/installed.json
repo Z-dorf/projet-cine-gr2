@@ -20,14 +20,22 @@
         "suggest": {
             "ext-mbstring": "For best performance"
         },
+<<<<<<< HEAD
         "time": "2018-01-30 19:27:44",
+=======
+        "time": "2018-01-30T19:27:44+00:00",
+>>>>>>> 888d98d126732a9138949e8b889be12e0d85fcbc
         "type": "library",
         "extra": {
             "branch-alias": {
                 "dev-master": "1.7-dev"
             }
         },
+<<<<<<< HEAD
         "installation-source": "source",
+=======
+        "installation-source": "dist",
+>>>>>>> 888d98d126732a9138949e8b889be12e0d85fcbc
         "autoload": {
             "psr-4": {
                 "Symfony\\Polyfill\\Mbstring\\": ""
@@ -84,14 +92,22 @@
             "symfony/debug": "^2.7",
             "symfony/phpunit-bridge": "^3.3"
         },
+<<<<<<< HEAD
         "time": "2018-04-02 09:24:19",
+=======
+        "time": "2018-04-02T09:24:19+00:00",
+>>>>>>> 888d98d126732a9138949e8b889be12e0d85fcbc
         "type": "library",
         "extra": {
             "branch-alias": {
                 "dev-master": "2.4-dev"
             }
         },
+<<<<<<< HEAD
         "installation-source": "source",
+=======
+        "installation-source": "dist",
+>>>>>>> 888d98d126732a9138949e8b889be12e0d85fcbc
         "autoload": {
             "psr-0": {
                 "Twig_": "lib/"
