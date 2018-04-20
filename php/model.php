@@ -12,10 +12,10 @@ function getMovies(){
     $nbMovies = count($movies);
 
     //on boucle sur nos films
-    foreach ($movies as $key => $row) {
+    foreach ($movies as $movie => $row) {
 
         // on stock dans un tableau le titre du film
-        $arrayMovies[$key] = [
+        $arrayMovies[$movie] = [
             'titre' => utf8_encode($row['titre_f'])
         ];
 
@@ -26,7 +26,7 @@ function getMovies(){
         $genres = $stg->fetchAll();
 
         // on stock les genres récupérés dans le tableau précédents
-        $arrayMovies[$key]['genres'] = $genres;
+        $arrayMovies[$movie]['genre'] = $genres;
         
     }
     
