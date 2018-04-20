@@ -1,35 +1,39 @@
 <?php 
 
-$dbo = new PDO('mysql:host=127.0.0.1;dbname=allo_cine', 'root', 'root');
-
-$arrayMovies = [];
-
-$stm = $dbo->prepare('SELECT titre_f, id_f FROM films');
-$stm->execute();
-
-$movies = $stm->fetchAll();
-$nbMovies = count($movies);
-
-// premièrement on boucle sur nos films
-foreach ($movies as $key => $row) {
-
-    // on stock dans un tableau le titre du film
-    $arrayMovies[$key] = [
-        'titre' => utf8_encode($row['titre_f'])
-    ];
-
-    // on request les genres du film en cours
-    $stg = $dbo->prepare('SELECT g.* FROM genres g INNER JOIN liaison_g_f lgf ON lgf.id_genre = g.id_g WHERE lgf.id_film = :id_film');
-    $stg->bindParam(':id_film', $row['id_f']);
-    $stg->execute();
-    $genres = $stg->fetchAll();
-
-    // on stock les genres récupérés dans le tableau précédents
-    $arrayMovies[$key]['genres'] = $genres;
+function getMovies(){
     
+    $dbo = new PDO('mysql:host=127.0.0.1;dbname=allo_cine', 'root', 'root');
+    $arrayMovies = [];
+
+    $stm = $dbo->prepare('SELECT titre_f, id_f FROM films');
+    $stm->execute();
+
+    $movies = $stm->fetchAll();
+    $nbMovies = count($movies);
+
+    //on boucle sur nos films
+    foreach ($movies as $key => $row) {
+
+        // on stock dans un tableau le titre du film
+        $arrayMovies[$key] = [
+            'titre' => utf8_encode($row['titre_f'])
+        ];
+
+        // on request les genres du film en cours
+        $stg = $dbo->prepare('SELECT g.* FROM genres g INNER JOIN liaison_g_f lgf ON lgf.id_genre = g.id_g WHERE lgf.id_film = :id_film');
+        $stg->bindParam(':id_film', $row['id_f']);
+        $stg->execute();
+        $genres = $stg->fetchAll();
+
+        // on stock les genres récupérés dans le tableau précédents
+        $arrayMovies[$key]['genres'] = $genres;
+        
+    }
+    
+    return $arrayMovies;
 }
 
-die;
+
 
 
 /* 
