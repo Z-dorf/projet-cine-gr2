@@ -2,7 +2,24 @@
 
 include '../php/model.php';
 
-echo 'coucou';
+$movies = getMovies();
+
+echo "<ul>";
+
+foreach ($movies as $movie) {
+
+    echo "<li>".$movie['titre'].$movie['genre']."</li>";
+
+
+
+
+
+}
+
+echo "</ul>";
+
+
+
 
 
 ?>
