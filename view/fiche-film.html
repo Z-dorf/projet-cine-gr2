@@ -1,0 +1,18 @@
+
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <h1>Film : {{ movie.titre }} </h1>
+    <ul>
+
+        <li>Description : {{ movie.description }}</li>
+        <li>Année de sortie : {{ movie.annee }}</li>
+        <li>Genre : {{ movie.genre }}</li>
+        <li>Acteurs : {{ movie.acteur }}</li>
+        <li>Realisateur : {{ movie.realisateur }}</li>
+        <img src="{{ movie.image }}"> 
+
+
+    </ul>
+{% endblock %}

@@ -8,14 +8,14 @@
         {% for movie in movies %}
 
         <li>Titre :
-            <a href="">{{ movie.titre }}</a>
+            <a href="index.php?action=fiche-film&id={{ movie.id_f }}"> {{ movie.titre }}</a>
         </li>
         <li>Description : {{ movie.description }}</li>
         <li>Année de sortie : {{ movie.annee }}</li>
         <li>Genre : {{ movie.genre }}</li>
         <li>Acteurs : {{ movie.acteur }}</li>
         <li>Realisateur : {{ movie.realisateur }}</li>
-        <img src= {{ movie.image }}> 
+        <img src="{{ movie.image }}"> 
         {% endfor %}
 
     </ul>

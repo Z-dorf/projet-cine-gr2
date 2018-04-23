@@ -24,9 +24,7 @@ function getMovies(){
             'realisateur' => utf8_encode(getRealById($row['id_f'])),
             'image' => 'assets/medias/film_'.$row["id_f"].'.jpg'
         ];
-
-
-            
+ 
     }
     
     return $arrayMovies;
@@ -70,5 +68,7 @@ function getRealById($id_film){
     return $realisateurs['realisateur'];
 
 }
+
+
 
 ?>
