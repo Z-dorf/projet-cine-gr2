@@ -1,27 +1,29 @@
 <?php
-/*
-require 'vendor/autoload.php';
 
-//Rounting
-$page = 'home';
+require 'controleur/affiche.php';
 
-if (isset($_GET['p'])){
-    $page = $_GET['p'];
-}
+// //Rounting
+// $page = 'home';
+
+// if (isset($_GET['p'])){
+//     $page = $_GET['p'];
+// }
 
 //Rendu du template
 
 
-$loader = new Twig_Loader_Filesystem(__DIR__ . '/templates');
+// $loader = new Twig_Loader_Filesystem(__DIR__ . '/templates');
 
-$twig = new Twig_Environment($loader,[
+// $twig = new Twig_Environment($loader,[
 
-    'cache' => false, // __DIR__ . 'tmp'
+//     'cache' => false, // __DIR__ . 'tmp'
 
-]);
+// ]);
+
+
 
 switch ($page) { //routeur
-    case 'contact': 
+    case 'contact': "cine" "acteurs" "realisateurs" "films"
     echo $twig->render('contact.twig');
     break;
 
@@ -42,6 +44,6 @@ switch ($page) { //routeur
         'year' => '1 an'
 
     ]]);
-} */
+} 
 
 ?>
