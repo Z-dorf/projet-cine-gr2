@@ -1,25 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+{% extends 'layout.html' %}
 
-<body>
+{% block content %}
     <h1>Members</h1>
     <ul>
-        
+
         {% for movie in movies %}
 
-        <li>{{ movie.titre }}</li>
-        <li>{{ movie.genre }}</li>
-
+        <li>Titre :
+            <a href="">{{ movie.titre }}</a>
+        </li>
+        <li>Description : {{ movie.description }}</li>
+        <li>Année de sortie : {{ movie.annee }}</li>
+        <li>Genre : {{ movie.genre }}</li>
+        <li>Acteurs : {{ movie.acteur }}</li>
+        <li>Realisateur : {{ movie.realisateur }}</li>
+        <img src= {{ movie.image }}> 
         {% endfor %}
 
     </ul>
-</body>
-
-</html>
+{% endblock %}

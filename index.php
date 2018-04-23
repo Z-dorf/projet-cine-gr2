@@ -5,7 +5,7 @@ require 'controleur/affiche.php';
 
 //Rounting
 
-/* if (isset($_GET['projet-cine-gr2'])){
+if (isset($_GET['projet-cine-gr2'])){
     
     switch ($_GET['projet-cine-gr2']) { 
         
@@ -25,7 +25,7 @@ require 'controleur/affiche.php';
     
 
     }
-} */
+} 
 
 
 

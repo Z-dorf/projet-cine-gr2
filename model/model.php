@@ -1,11 +1,11 @@
 <?php 
     $dbo = new PDO('mysql:host=127.0.0.1;dbname=allo_cine', 'root', 'root');
-    
+
 function getMovies(){
     
    
     global $dbo;
-    $stm = $dbo->prepare('SELECT titre_f, id_f FROM films');
+    $stm = $dbo->prepare('SELECT titre_f, id_f, description_f, annee_f FROM films');
     $stm->execute();
 
     $movies = $stm->fetchAll();
@@ -15,9 +15,14 @@ function getMovies(){
 
         // on stock dans un tableau le titre du film
         $arrayMovies[] = [
-            'titre' => $row['titre_f'],
+            'titre' => utf8_encode($row['titre_f']),
             'id_f' => $row['id_f'],
-            'genre' => getGenreById($row['id_f'])
+            'description' => utf8_encode($row['description_f']),
+            'annee' => $row['annee_f'],
+            'genre' => utf8_encode(getGenreById($row['id_f'])),
+            'acteur' => utf8_encode(getActeurById($row['id_f'])),
+            'realisateur' => utf8_encode(getRealById($row['id_f'])),
+            'image' => 'assets/medias/film_'.$row["id_f"].'.jpg'
         ];
 
 
@@ -27,72 +32,43 @@ function getMovies(){
     return $arrayMovies;
 }
 
-        function getGenreById($id_film){
-        // on request les genres du film en cours
-        global $dbo;
-        $stg = $dbo->prepare('SELECT GROUP_CONCAT(type_g) as genre FROM genres g INNER JOIN liaison_g_f lgf ON lgf.id_genre = g.id_g WHERE lgf.id_film = :id_film');            
-        $stg->bindParam(':id_film', $id_film);
-        $stg->execute();
-        $genres = $stg->fetch();
+function getGenreById($id_film){
 
-        return $genres['genre'];
+    global $dbo;
 
-    }
+    $stg = $dbo->prepare('SELECT GROUP_CONCAT(type_g) as genre FROM genres g INNER JOIN liaison_g_f lgf ON lgf.id_genre = g.id_g WHERE lgf.id_film = :id_film');            
+    $stg->bindParam(':id_film', $id_film);
+    $stg->execute();
+    $genres = $stg->fetch();
 
-    function getActeurById($id_acteur){
-        // on stock les genres récupérés dans le tableau précédents
+    return $genres['genre'];
 
-        $sta = $dbo->prepare('SELECT GROUP_CONCAT( CONCAT(prenom_a," ", nom_a)) as acteur FROM acteurs a INNER JOIN liaison_a_f laf ON laf.id_acteur = a.id_a WHERE laf.id_film = :id_film');                    
-        $sta->bindParam(':id_film', $row['id_f']);
-        $sta->execute();
-        $acteurs = $sta->fetch();
+}
 
+function getActeurById($id_film){
 
-    }
-/* 
-$dbo = new PDO('mysql:host=127.0.0.1;dbname=allo_cine', 'root', 'root');
+    global $dbo;
 
-$arrayMovies = [];
-// $dep = $_POST['dep'];
+    $sta = $dbo->prepare('SELECT GROUP_CONCAT( CONCAT(prenom_a," ", nom_a)) as acteur FROM acteurs a INNER JOIN liaison_a_f laf ON laf.id_acteur = a.id_a WHERE laf.id_film = :id_film');                    
+    $sta->bindParam(':id_film', $id_film);
+    $sta->execute();
+    $acteurs = $sta->fetch();
 
-$stm = $dbo->prepare('SELECT titre_f, id_f FROM films');
-// $sth->bindParam(':departement_code', $dep);
-$stm->execute();
-$movies = $stm->fetchAll();
-$stg = $dbo->prepare('SELECT type_g, id_film FROM genres, liaison_g_f');
+    return $acteurs['acteur'];
 
-$nbMovies = count($movies);
+}
 
-foreach ($movies as $row) {
+function getRealById($id_film){
 
-    $arrayMovies = [
-        'titre' => utf8_encode($row['titre_f'])
+    global $dbo;
 
-    ];
+    $str = $dbo->prepare('SELECT GROUP_CONCAT( CONCAT(prenom_r," ", nom_r)) as realisateur FROM realisateurs r INNER JOIN liaison_r_f lrf ON lrf.id_realisateur = r.id_r WHERE lrf.id_film = :id_film');            
+    $str->bindParam(':id_film', $id_film);
+    $str->execute();
+    $realisateurs = $str->fetch();
 
+    return $realisateurs['realisateur'];
 
-     for ($i = 0; $i < 4; $i++){
-        $stg->execute();
-        $genders = $stg->fetchAll();
-
-
-         foreach ($genders as $genderRow){
-
-            if($row['id_f'] == $genderRow['id_film']){
-                array_push($arrayMovies, $genderRow['type_g']);
-            }
-            
-            else {
-                break;
-            }
-              
-        
-            
-         }
-              print_r ($arrayMovies);
-      }
-
-
-} */
+}
 
 ?>
