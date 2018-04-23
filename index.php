@@ -2,43 +2,38 @@
 
 require 'controleur/affiche.php';
 
-// //Rounting
-// $page = 'home';
 
-// if (isset($_GET['p'])){
-//     $page = $_GET['p'];
-// }
+//Rounting
 
-//Rendu du template
+/* if (isset($_GET['projet-cine-gr2'])){
+    
+    switch ($_GET['projet-cine-gr2']) { 
+        
+    //routeur
 
-
-// $loader = new Twig_Loader_Filesystem(__DIR__ . '/templates');
-
-// $twig = new Twig_Environment($loader,[
-
-//     'cache' => false, // __DIR__ . 'tmp'
-
-// ]);
-
-
-
-switch ($page) { //routeur
-    case 'contact': "cine" "acteurs" "realisateurs" "films"
-    echo $twig->render('contact.twig');
+    case 'affiche':
+    require_once('affiche.html');
     break;
 
-    case 'home':
-    echo $twig->render('home.twig');
+    case 'fiche':
+    require_once('fiche-film.html');
     break;
 
     default:
-    header('HTTP/1.0 404 Not Found');
-    echo $twig->render('404.twig');
-    break;
-}
 
+    require_once('error.html');
+    
+
+    }
+} */
+
+
+
+/*
  if ($page === 'home') {
-    echo $twig->render('home.twig', ['person' => [
+
+        echo $twig->render('home.twig', ['movies' => $listMovies [
+            
 
         'name' => 'Napo',
         'year' => '1 an'

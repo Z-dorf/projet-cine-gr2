@@ -1,22 +1,22 @@
 <?php 
+require_once ('vendor/autoload.php');
 
-include '../php/model.php';
+$loader = new Twig_Loader_Filesystem('view');
+$twig = new Twig_Environment($loader,[
+
+    'cache' => false,
+
+ ]);
+
+require_once ('model/model.php');
 
 $movies = getMovies();
-var_dump($movies);
 
+//faire le render transmettre la vue au traitement
+$template = $twig->load('affiche.html');
 
-echo "<ul>";
+echo $template->render(array('movies' => $movies));
 
-foreach ($movies as $movie) {
-
-    echo "<li>".$movie['titre'].$movie['genre']."</li>";
-
-
-}
-
-echo "</ul>";
-
- 
+var_dump ($movies);
 
 ?>

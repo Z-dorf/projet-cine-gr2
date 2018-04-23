@@ -20,13 +20,24 @@ function getMovies(){
         ];
 
         // on request les genres du film en cours
-        $stg = $dbo->prepare('SELECT g.* FROM genres g INNER JOIN liaison_g_f lgf ON lgf.id_genre = g.id_g WHERE lgf.id_film = :id_film');
+        $stg = $dbo->prepare('SELECT g.* FROM genres g INNER JOIN liaison_g_f lgf ON lgf.id_genre = g.id_g WHERE lgf.id_film = :id_film');            
         $stg->bindParam(':id_film', $row['id_f']);
         $stg->execute();
         $genres = $stg->fetchAll();
 
         // on stock les genres récupérés dans le tableau précédents
         $arrayMovies[$movie]['genre'] = $genres;
+
+        $sta = $dbo->prepare('SELECT a.* FROM acteurs a INNER JOIN liaison_a_f laf ON laf.id_acteur = a.id_a WHERE laf.id_film = :id_film');                    
+        $sta->bindParam(':id_film', $row['id_f']);
+        $sta->execute();
+        $acteurs = $sta->fetchAll();
+
+        // on stock les genres récupérés dans le tableau précédents
+        $arrayMovies[$movie]['acteur'] = $acteurs;
+
+
+
         
     }
     
