@@ -1,34 +1,34 @@
 <?php
 
+require 'controleur/affiche.php';
 //Rounting
 
-if (isset($_GET['nomdemapage'])){
+/* if (isset($_GET['projet-cine-gr2'])){
     
-    switch ($_GET['nomdemapage']) { //routeur
+    switch ($_GET['projet-cine-gr2']) { 
+        
+    //routeur
 
-    case 'home':
-    echo $twig->render('home.twig');
+    case 'affiche':
+    require_once('affiche.html');
+    break;
+
+    case 'fiche':
+    require_once('fiche-film.html');
     break;
 
     default:
-    header('HTTP/1.0 404 Not Found');
-    echo $twig->render('404.twig');
-    break;
+
+    require_once('error.html');
+    
 
     }
-}
+} */
 
 
 
 /*
  if ($page === 'home') {
-    echo $twig->render('home.twig', ['person' => [
-
-        'name' => 'Napo',
-        'year' => '1 an'
-
-    ]]);
-
 
         echo $twig->render('home.twig', ['movies' => $listMovies [
             
