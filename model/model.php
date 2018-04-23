@@ -1,5 +1,6 @@
 <?php 
     $dbo = new PDO('mysql:host=127.0.0.1;dbname=allo_cine', 'root', 'root');
+    
 function getMovies(){
     
    

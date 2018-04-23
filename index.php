@@ -1,6 +1,8 @@
 <?php
 
 require 'controleur/affiche.php';
+
+
 //Rounting
 
 /* if (isset($_GET['projet-cine-gr2'])){
