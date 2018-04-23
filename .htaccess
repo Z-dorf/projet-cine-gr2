@@ -1,11 +1,11 @@
-    AccesFileName ".config" 
+    # AccesFileName ".config" 
     # si je veux rename
 
-    <files .htaccess>
-    order allow,deny
-    deny from all
-    </files> 
-    # A mettre dans tous nos fichiers (?)
+    # <files .htaccess>
+    # order allow,deny
+    # deny from all
+    # </files> 
+    # A mettre dans tous nos fichiers (?) A mettre dans la config Apache ! 
 
     RewriteEngine on
     Options +FollowSymlinks

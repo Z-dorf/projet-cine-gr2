@@ -1,6 +1,12 @@
 <?php 
-    $dbo = new PDO('mysql:host=127.0.0.1;dbname=allo_cine', 'root', 'root');
-
+try
+{
+    $dbo = new PDO('mysql:host=localhost;dbname=project_cine', 'root', '');
+}
+catch (exeption $e)
+{
+    die ('Erreur : ' . $e->getMessage());
+}
 function getMovies(){
     
    
