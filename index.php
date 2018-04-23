@@ -1,22 +1,23 @@
 <?php
 
-require 'controleur/affiche.php';
-
-
 //Rounting
 
-/* if (isset($_GET['projet-cine-gr2'])){
+if (isset($_GET['action'])){
     
-    switch ($_GET['projet-cine-gr2']) { 
+    switch ($_GET['action']) { 
         
     //routeur
 
     case 'affiche':
-    require_once('affiche.html');
+    require_once('controleur/affiche.php');
     break;
 
-    case 'fiche':
-    require_once('fiche-film.html');
+    case 'fiche-film':
+    require_once('controleur/fiche-film.php');
+
+        echo 'coucou le grand';
+
+
     break;
 
     default:
@@ -25,20 +26,12 @@ require 'controleur/affiche.php';
     
 
     }
-} */
+} else {
+    require_once('controleur/affiche.php');
+}
 
 
+var_dump ($_GET['action']);
 
-/*
- if ($page === 'home') {
-
-        echo $twig->render('home.twig', ['movies' => $listMovies [
-            
-
-        'name' => 'Napo',
-        'year' => '1 an'
-
-    ]]);
-} 
 
 ?>
