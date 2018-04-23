@@ -1,52 +1,54 @@
 <?php 
-
+    $dbo = new PDO('mysql:host=127.0.0.1;dbname=allo_cine', 'root', 'root');
+    
 function getMovies(){
     
-    $dbo = new PDO('mysql:host=127.0.0.1;dbname=allo_cine', 'root', 'root');
-    $arrayMovies = [];
-
+   
+    global $dbo;
     $stm = $dbo->prepare('SELECT titre_f, id_f FROM films');
     $stm->execute();
 
     $movies = $stm->fetchAll();
-    $nbMovies = count($movies);
 
     //on boucle sur nos films
-    foreach ($movies as $movie => $row) {
+    foreach ($movies as $row) {
 
         // on stock dans un tableau le titre du film
-        $arrayMovies[$movie] = [
-            'titre' => utf8_encode($row['titre_f'])
+        $arrayMovies[] = [
+            'titre' => $row['titre_f'],
+            'id_f' => $row['id_f'],
+            'genre' => getGenreById($row['id_f'])
         ];
 
-        // on request les genres du film en cours
-        $stg = $dbo->prepare('SELECT g.* FROM genres g INNER JOIN liaison_g_f lgf ON lgf.id_genre = g.id_g WHERE lgf.id_film = :id_film');            
-        $stg->bindParam(':id_film', $row['id_f']);
-        $stg->execute();
-        $genres = $stg->fetchAll();
 
-        // on stock les genres récupérés dans le tableau précédents
-        $arrayMovies[$movie]['genre'] = $genres;
-
-        $sta = $dbo->prepare('SELECT a.* FROM acteurs a INNER JOIN liaison_a_f laf ON laf.id_acteur = a.id_a WHERE laf.id_film = :id_film');                    
-        $sta->bindParam(':id_film', $row['id_f']);
-        $sta->execute();
-        $acteurs = $sta->fetchAll();
-
-        // on stock les genres récupérés dans le tableau précédents
-        $arrayMovies[$movie]['acteur'] = $acteurs;
-
-
-
-        
+            
     }
     
     return $arrayMovies;
 }
 
+        function getGenreById($id_film){
+        // on request les genres du film en cours
+        global $dbo;
+        $stg = $dbo->prepare('SELECT GROUP_CONCAT(type_g) as genre FROM genres g INNER JOIN liaison_g_f lgf ON lgf.id_genre = g.id_g WHERE lgf.id_film = :id_film');            
+        $stg->bindParam(':id_film', $id_film);
+        $stg->execute();
+        $genres = $stg->fetch();
+
+        return $genres['genre'];
+
+    }
+
+    function getActeurById($id_acteur){
+        // on stock les genres récupérés dans le tableau précédents
+
+        $sta = $dbo->prepare('SELECT GROUP_CONCAT( CONCAT(prenom_a," ", nom_a)) as acteur FROM acteurs a INNER JOIN liaison_a_f laf ON laf.id_acteur = a.id_a WHERE laf.id_film = :id_film');                    
+        $sta->bindParam(':id_film', $row['id_f']);
+        $sta->execute();
+        $acteurs = $sta->fetch();
 
 
-
+    }
 /* 
 $dbo = new PDO('mysql:host=127.0.0.1;dbname=allo_cine', 'root', 'root');
 

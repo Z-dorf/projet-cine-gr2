@@ -20,23 +20,22 @@ function getMovies(){
         ];
 
         // on request les genres du film en cours
-        $stg = $dbo->prepare('SELECT g.* FROM genres g INNER JOIN liaison_g_f lgf ON lgf.id_genre = g.id_g WHERE lgf.id_film = :id_film');            
+        $stg = $dbo->prepare('SELECT GROUP_CONCAT(type_g) as genre FROM genres g INNER JOIN liaison_g_f lgf ON lgf.id_genre = g.id_g WHERE lgf.id_film = :id_film');            
         $stg->bindParam(':id_film', $row['id_f']);
         $stg->execute();
         $genres = $stg->fetchAll();
+        
 
         // on stock les genres récupérés dans le tableau précédents
         $arrayMovies[$movie]['genre'] = $genres;
 
-        $sta = $dbo->prepare('SELECT a.* FROM acteurs a INNER JOIN liaison_a_f laf ON laf.id_acteur = a.id_a WHERE laf.id_film = :id_film');                    
+        $sta = $dbo->prepare('SELECT GROUP_CONCAT( CONCAT(prenom_a," ", nom_a)) as acteur FROM acteurs a INNER JOIN liaison_a_f laf ON laf.id_acteur = a.id_a WHERE laf.id_film = :id_film');                    
         $sta->bindParam(':id_film', $row['id_f']);
         $sta->execute();
         $acteurs = $sta->fetchAll();
 
         // on stock les genres récupérés dans le tableau précédents
         $arrayMovies[$movie]['acteur'] = $acteurs;
-
-
 
         
     }
@@ -94,3 +93,20 @@ foreach ($movies as $row) {
 } */
 
 ?>
+
+
+// foreach ($movies as $movie) {
+
+//     echo "<li>".$movie['titre']."<br>";
+//     echo "Genre : ";
+//     foreach ($movie['genre'] as $genre){
+//         echo utf8_encode($genre[1])." ";
+//     }
+//     echo "<br>Acteurs :";
+//     foreach ($movie['acteur'] as $acteur){
+//         echo utf8_encode($acteur[1])." ".utf8_encode($acteur[2])." ";
+//     }
+//     echo "</li>";
+
+
+// }
