@@ -10,7 +10,9 @@ $twig = new Twig_Environment($loader,[
 
 require_once ('model/model.php');
 
+
 $movies = getMovies('id_f');
+
 
 //faire le render transmettre la vue au traitement
 $template = $twig->load('fiche-film.html');

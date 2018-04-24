@@ -5,8 +5,10 @@ function getMovies(){
     
    
     global $dbo;
+
     $stms = $dbo->prepare('SELECT titre_f, id_f, description_f, annee_f FROM films');
     $stms->execute();
+
 
     $movies = $stms->fetchAll();
 
