@@ -38,6 +38,8 @@ function getMovies(){
     return $arrayMovies;
 }
 
+
+
 function getGenreById($id_film){
 
     global $dbo;
@@ -48,7 +50,7 @@ function getGenreById($id_film){
     $genres = $stg->fetch();
 
     return $genres['genre'];
-
+ 
 }
 
 function getActeurById($id_film){

@@ -31,7 +31,7 @@ if (isset($_GET['action'])){
 }
 
 
-var_dump ($_GET['action']);
+// var_dump ($_GET['action']);
 
 
 ?>

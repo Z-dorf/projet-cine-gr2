@@ -19,6 +19,6 @@ echo $template->render(array('movies' => $movies));
 
 // global $rows
 
-var_dump ($rows);
+// var_dump ($rows);
 
 ?>
