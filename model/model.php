@@ -5,10 +5,10 @@ function getMovies(){
     
    
     global $dbo;
-    $stm = $dbo->prepare('SELECT titre_f, id_f, description_f, annee_f FROM films');
-    $stm->execute();
+    $stms = $dbo->prepare('SELECT titre_f, id_f, description_f, annee_f FROM films');
+    $stms->execute();
 
-    $movies = $stm->fetchAll();
+    $movies = $stms->fetchAll();
 
     //on boucle sur nos films
     foreach ($movies as $row) {
