@@ -5,10 +5,8 @@ function getMovies(){
     
    
     global $dbo;
-
     $stms = $dbo->prepare('SELECT titre_f, id_f, description_f, annee_f FROM films');
     $stms->execute();
-
 
     $movies = $stms->fetchAll();
 
@@ -30,6 +28,32 @@ function getMovies(){
     }
     
     return $arrayMovies;
+}
+
+
+function getMovie($id_film){
+
+    global $dbo;
+
+    $stm = $dbo->prepare('SELECT titre_f, id_f, description_f, annee_f FROM films WHERE id_f = :id_film');            
+    $stm->bindParam(':id_film', $id_film);
+    $stm->execute();
+    $movie = $stm->fetch();
+
+
+    $arrayMovie[] = [
+        'titre' => utf8_encode($movie['titre_f']),
+        'id_f' => $movie['id_f'],
+        'description' => utf8_encode($movie['description_f']),
+        'annee' => 'annee_f',
+        'genre' => utf8_encode(getGenreById('id_f')),
+        'acteur' => utf8_encode(getActeurById('id_f')),
+        'realisateur' => utf8_encode(getRealById('id_f')),
+        'image' => 'assets/medias/film_'.$id_film.'.jpg'
+    ];
+
+    return $arrayMovie;
+
 }
 
 function getGenreById($id_film){

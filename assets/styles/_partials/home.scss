@@ -1,11 +1,16 @@
 body {
     .wrap-home {
+        padding : 50px 50px 20px 50px;
+        background-color : $light-grey;
+        box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.466);
+
         .ul-home {
             list-style: none;
             display: flex;
             flex-wrap: wrap;
             padding: 0;
             .wrap-list {
+
                 opacity: 0.7;
                 transition: all .8s;
                 &:hover {
@@ -15,7 +20,7 @@ body {
                 .img-movie-home {
                     img {
                         width: 100%;
-                        height: auto;
+                        max-height: auto;
                         box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.466);
                     }
                 }
@@ -35,23 +40,16 @@ body {
                     }
                 }
                 .button {
+                    margin : 10px 0 40px 0;
                     a {
+
+                        padding : 3px 10px;
                         text-decoration: none;
                         font-family: "Roboto-M-L";
-                        text-transform: uppercase;
                         font-size: 12px;
                         color: $light-grey;
                         background-color: $blue;
                         text-align: right;
-                        &:hover {
-                            text-decoration: none;
-                            font-family: "Roboto-M-L";
-                            text-transform: uppercase;
-                            font-size: 12px;
-                            color: $light-grey;
-                            background-color: $blue;
-                            text-align: right;
-                        }
                     }
                 }
             }

@@ -10,7 +10,7 @@
     <section class="row wrap-home">
         <ul class="ul-home">
             {% for movie in movies %}
-                <div class="col-6 col-md-3 wrap-list">
+                <div class="col s6 col m4  col l3 wrap-list">
                     <div class="img-movie-home">
                         <a href="index.php?action=fiche-film&id={{ movie.id_f }}">
                             <img src="{{ movie.image }}">
@@ -22,7 +22,7 @@
                                 {{ movie.titre }}</a>
                         </li>
                         <li class="button">
-                            <a href="index.php?action=fiche-film&id={{ movie.id_f }}">En savoir +</a>
+                            <a href="index.php?action=fiche-film&id={{ movie.id_f }}">en savoir +</a>
                         </li>
                     </p>
                 </div>

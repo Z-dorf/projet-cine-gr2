@@ -15,9 +15,6 @@ if (isset($_GET['action'])){
     case 'fiche-film':
     require_once('controleur/fiche-film.php');
 
-        echo 'coucou le grand';
-
-
     break;
 
     default:
@@ -29,9 +26,5 @@ if (isset($_GET['action'])){
 } else {
     require_once('controleur/affiche.php');
 }
-
-
-var_dump ($_GET['action']);
-
 
 ?>
