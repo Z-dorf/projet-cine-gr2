@@ -10,15 +10,13 @@ $twig = new Twig_Environment($loader,[
 
 require_once ('model/model.php');
 
+$id_filmSeul = $_GET['id'];
 
-$movies = getMovies('id_f');
-
+$movie = getMovie($id_filmSeul);
 
 //faire le render transmettre la vue au traitement
 $template = $twig->load('fiche-film.html');
 
-echo $template->render(array('movies' => $movies));
-
-var_dump ($movies);
+echo $template->render(array('movie' => $movie));
 
 ?>
