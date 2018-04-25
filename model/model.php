@@ -102,7 +102,7 @@ function getReal($id_real){
     
     global $dbo;
 
-    $stgt = $dbo->prepare('SELECT prenom_r, nom_r, id_r FROM realisateurs, films WHERE id_r = :id_real and id_f = id_r');            
+    $stgt = $dbo->prepare('SELECT prenom_r, nom_r, id_r, nationalite, date_naissance, age, id_f FROM realisateurs, films WHERE id_r = :id_real and id_f = id_r');            
     $stgt->bindParam(':id_real', $id_real);
     $stgt->execute();
     $real = $stgt->fetch();
@@ -110,8 +110,13 @@ function getReal($id_real){
     $arrayReal = [
         'prenom' => utf8_encode($real['prenom_r']),
         'nom' => utf8_encode($real['nom_r']),
+        'nationnalite' => utf8_encode($real['nationalite']),
+        'naissance' => utf8_encode($real['date_naissance']),
+        'age' => utf8_encode($real['age']),
         'id_r' => $real['id_r'],
-        'films' => getFilmReal($real['id_r'])
+        'id_f' => $real['id_f'],
+        'films' => getFilmReal($real['id_r']),
+        'image' => 'assets/medias/real_'.$id_real.'.jpg'
     ];
 
     return $arrayReal;

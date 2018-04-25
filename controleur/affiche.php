@@ -14,7 +14,7 @@ $movies = getMovies();
 
 //faire le render transmettre la vue au traitement
 $template = $twig->load('affiche.html');
-var_dump($movies);
+
 echo $template->render(array('movies' => $movies));
 
 ?>

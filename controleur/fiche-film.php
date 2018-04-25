@@ -14,10 +14,9 @@ $id_filmSeul = $_GET['id'];
 
 $movie = getMovie($id_filmSeul);
 
-var_dump($movie);
 //faire le render transmettre la vue au traitement
 $template = $twig->load('fiche-film.html');
 
 echo $template->render(array('movie' => $movie));
 
-?>
+?> 

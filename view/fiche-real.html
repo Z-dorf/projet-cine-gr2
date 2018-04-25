@@ -2,12 +2,44 @@
 
 {% block content %}
 
-    <p>{{ real.prenom }}</p>
+    <div class="breadcrumb">
+        <a href="">< home</a>"
+    </div>
+    <section class="row wrap-fiche">
+        <h2>{{ real.prenom }}
+            {{ real.nom }}</h2>
+        <div class="row wrap-infos-film">
+            <div class="img-film col s12 col m3">
+                <img src="{{ real.image }}">
+            </div>
+            <ul class="infos-film col s12 col m9">
+                <li class="infos">
+                    <span class="bold">Nationnalité :</span>
+                    <br>
+                    {{ real.nationnalite }}
+                </li>
+                <li class="infos">
+                    <span class="bold">Date de naissance :</span>
+                    <br>
+                    {{ real.naissance }}
+                </li>
+                <li class="infos">
+                    <span class="bold">Age :</span>
+                    <br>
+                    {{ real.age }}
+                </li>
+                <li class="infos">
+                    <span class="bold">Film réalisé :</span>
+                    <br>
+                    {% for films in real.films %}
 
-    {% for films in real.films %}
+                        <a href="index.php?action=fiche-film&id={{ real.id_f }}" class="link-movie">
+                            {{ films.titre_f | convert_encoding('UTF-8', 'ISO-8859-1') }}</a><br>
 
-         {{ films.titre_f }}<br>
-
-   {% endfor %}
+                    {% endfor %}
+                </li>
+            </ul>
+        </div>
+    </section>
 
 {% endblock %}

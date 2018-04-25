@@ -16,7 +16,7 @@ $real = getReal($id_RealSeul);
 
 //faire le render transmettre la vue au traitement
 $template = $twig->load('fiche-real.html');
-var_dump($real);
+
 echo $template->render(array('real' => $real));
 
 ?>

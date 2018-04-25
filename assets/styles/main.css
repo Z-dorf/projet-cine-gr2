@@ -111,6 +111,9 @@ body .wrap-fiche {
         body .wrap-fiche .wrap-infos-film .infos-film .infos .bold {
           font-family: "Roboto-M-B";
           color: #496B81; }
+        body .wrap-fiche .wrap-infos-film .infos-film .infos .link-movie {
+          text-decoration: none;
+          color: #8E5F5E; }
 
 .wrap-error {
   padding: 50px 50px 20px 50px;
