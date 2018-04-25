@@ -10,11 +10,13 @@ $twig = new Twig_Environment($loader,[
 
 require_once ('model/model.php');
 
-$movies = getMovies();
+$id_RealSeul = $_GET['id'];
+
+$real = getReal($id_RealSeul);
 
 //faire le render transmettre la vue au traitement
-$template = $twig->load('affiche.html');
-var_dump($movies);
-echo $template->render(array('movies' => $movies));
+$template = $twig->load('fiche-real.html');
+var_dump($real);
+echo $template->render(array('real' => $real));
 
 ?>

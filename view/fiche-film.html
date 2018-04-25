@@ -1,18 +1,37 @@
-
 {% extends 'layout.html' %}
 
 {% block content %}
+    <div class="breadcrumb">
+        <a href="">< home</a>"
+</div>
+<section class="row wrap-fiche">
+    <h2>{{ movie.titre }}</h2>
+    <div class="row wrap-infos-film">
+        <div class="img-film col s12 col m3">
+            <img src="{{ movie.image }}">
+        </div>
+        <ul class="infos-film col s12 col m9">
+            <li class="infos">
+                <span class="bold">De :</span>
+                <a href="index.php?action=fiche-real&id={{ movie.id_r }}">{{ movie.realisateur }}</a> </li>
+            <li class="infos">
+                <span class="bold">Avec :</span>
+                {{ movie.acteur }}</li>
+            <li class="infos">
+                <span class="bold">Année de sortie :</span>
+                {{ movie.annee }}</li>
+            <li class="infos">
+                <span class="bold">Genre :</span>
+                {{ movie.genre }}</li>
 
-    <h1>Film : {{ movie.titre }} </h1>
-    <ul>
-
-        <li>Description : {{ movie.description }}</li>
-        <li>Année de sortie : {{ movie.annee }}</li>
-        <li>Genre : {{ movie.genre }}</li>
-        <li>Acteurs : {{ movie.acteur }}</li>
-        <li>Realisateur : {{ movie.realisateur }}</li>
-        <img src="{{ movie.image }}"> 
-
-
-    </ul>
+        </ul>
+    </div>
+    <div class="row wrap-infos-film">
+        <ul class="infos-film">
+            <li class="infos">
+                <span class="bold">Description :</span>
+                {{ movie.description }}</li>
+        </ul>
+    </div>
+</section>
 {% endblock %}

@@ -4,35 +4,54 @@
 @font-face {
   font-family: "Roboto-M-L";
   src: url("../fonts/Roboto_Mono/RobotoMono-Light.ttf"); }
+@font-face {
+  font-family: "Raleway-SB";
+  src: url("../fonts/raleway/Raleway-SemiBold.ttf"); }
 header {
-  background: url("../medias/background.png") #333333;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: right;
-  padding: 15px 0;
+  background-image: url("../medias/footer_lodyas.png");
+  width: 100%;
+  height: 105px;
+  background-color: #333333;
   box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.466);
   margin-bottom: 35px; }
-  header h1 {
-    font-family: "Roboto-M-B";
-    color: #eeeeee;
-    font-size: 20px;
-    display: inline-block; }
-    header h1 .h1-color {
-      color: #496B81;
-      text-transform: uppercase;
-      font-size: 10px; }
+  header .wrap-header {
+    display: flex;
+    padding: 30px 0; }
+    header .wrap-header .img-header {
+      width: 30px; }
+      header .wrap-header .img-header img {
+        width: 100%;
+        height: auto; }
+    header .wrap-header h1 {
+      font-family: "Roboto-M-B";
+      color: #eeeeee;
+      font-size: 20px;
+      display: inline-block;
+      padding-left: 25px;
+      margin: auto 0; }
+      header .wrap-header h1 .h1-color {
+        color: #496B81;
+        text-transform: uppercase;
+        font-size: 15px; }
 
 body .wrap-home {
-  padding: 50px 50px 20px 50px;
-  background-color: #eeeeee;
-  box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.466); }
+  padding: 50px 50px 20px 50px; }
+  body .wrap-home h2 {
+    font-family: "Raleway-SB";
+    color: #333333;
+    font-size: 20px;
+    padding-left: 10px;
+    margin: auto 0;
+    text-shadow: .04em .04em 0 #9cb8b3; }
   body .wrap-home .ul-home {
+    margin-top: 40px;
     list-style: none;
     display: flex;
     flex-wrap: wrap;
     padding: 0; }
     body .wrap-home .ul-home .wrap-list {
-      opacity: 0.7;
+      margin: 0;
+      opacity: 0.8;
       transition: all .8s; }
       body .wrap-home .ul-home .wrap-list:hover {
         opacity: 1;
@@ -40,6 +59,7 @@ body .wrap-home {
       body .wrap-home .ul-home .wrap-list .img-movie-home img {
         width: 100%;
         max-height: auto;
+        border: 8px solid #496B81;
         box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.466); }
     body .wrap-home .ul-home .links .movie-title {
       padding-top: 15px; }
@@ -59,7 +79,49 @@ body .wrap-home {
         font-family: "Roboto-M-L";
         font-size: 12px;
         color: #eeeeee;
-        background-color: #496B81;
+        background-color: #8E5F5E;
         text-align: right; }
+
+body .breadcrumb a {
+  font-family: "Roboto-M-B";
+  text-transform: uppercase;
+  font-size: 13px;
+  color: #496B81; }
+body .wrap-fiche {
+  padding: 50px 50px 20px 50px;
+  margin-top: 10px; }
+  body .wrap-fiche h2 {
+    font-family: "Raleway-SB";
+    color: #333333;
+    font-size: 20px;
+    padding-left: 10px;
+    margin: auto 0;
+    text-shadow: .04em .04em 0 #9cb8b3;
+    margin-bottom: 15px; }
+  body .wrap-fiche .wrap-infos-film {
+    margin-top: 30px; }
+    body .wrap-fiche .wrap-infos-film .img-film img {
+      width: 100%;
+      box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.466); }
+    body .wrap-fiche .wrap-infos-film .infos-film {
+      margin: 0; }
+      body .wrap-fiche .wrap-infos-film .infos-film .infos {
+        margin-bottom: 15px;
+        font-family: "Raleway-SB"; }
+        body .wrap-fiche .wrap-infos-film .infos-film .infos .bold {
+          font-family: "Roboto-M-B";
+          color: #496B81; }
+
+.wrap-error {
+  padding: 50px 50px 20px 50px;
+  margin-top: 10px; }
+  .wrap-error p {
+    font-family: "Raleway-SB";
+    color: #333333;
+    font-size: 20px;
+    padding-left: 10px;
+    margin: auto 0;
+    text-shadow: .04em .04em 0 #9cb8b3;
+    margin-bottom: 15px; }
 
 /*# sourceMappingURL=main.css.map */

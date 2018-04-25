@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <p>{{ real.prenom }}</p>
+
+    {% for films in real.films %}
+
+         {{ films.titre_f }}<br>
+
+   {% endfor %}
+
+{% endblock %}
