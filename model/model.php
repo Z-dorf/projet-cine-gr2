@@ -23,6 +23,7 @@ function getMovies(){
             'acteur' => utf8_encode(getActeurById($row['id_f'])),
             'realisateur' => utf8_encode(getRealById($row['id_f'])),
             'image' => 'assets/medias/film_'.$row["id_f"].'.jpg'
+
         ];
  
     }
@@ -35,7 +36,7 @@ function getMovie($id_film){
 
     global $dbo;
 
-    $stm = $dbo->prepare('SELECT titre_f, id_f, description_f, annee_f, id_r FROM films, realisateurs WHERE id_f = :id_film and id_f = id_r');            
+    $stm = $dbo->prepare('SELECT titre_f, id_f, description_f, annee_f, id_r, iframe FROM films, realisateurs WHERE id_f = :id_film and id_f = id_r');            
     $stm->bindParam(':id_film', $id_film);
     $stm->execute();
     $movie = $stm->fetch();
@@ -50,7 +51,9 @@ function getMovie($id_film){
         'acteur' => utf8_encode(getActeurById($movie['id_f'])),
         'realisateur' => utf8_encode(getRealById($movie['id_f'])),
         'image' => 'assets/medias/film_'.$id_film.'.jpg',
-        'id_r' => $movie['id_r']
+        'id_r' => $movie['id_r'],
+        'iframe' => $movie['iframe'],
+        'bande' => 'assets/medias/bande_'.$id_film.'.jpg'
     ];
 
     return $arrayMovie;
