@@ -1,0 +1,71 @@
+body {
+    position: relative;
+    height: 100vh;
+    .breadcrumb {
+        a {
+            font-family: "Roboto-M-B";
+            text-transform: uppercase;
+            font-size: 13px;
+            color: $blue;
+        }
+    }
+    .wrap-fiche {
+        padding: 50px 50px 20px 50px;
+        margin-top: 10px;
+        h2 {
+            font-family: "Raleway-SB";
+            color: $dark-grey;
+            font-size: 20px;
+            padding-left: 10px;
+            margin: auto 0;
+            text-shadow: .04em .04em 0 #9cb8b3;
+            margin-bottom: 15px;
+        }
+        .wrap-infos-film {
+            margin-top: 30px;
+            h3 {
+                font-family: "Raleway-SB";
+                color: $dark-grey;
+                font-size: 20px;
+                padding-left: 10px;
+                margin: auto 0;
+                text-shadow: .04em .04em 0 #9cb8b3;
+                margin-bottom: 15px;
+                text-align : right;
+            }
+            .img-film {
+                img {
+                    width: 100%;
+                    box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.466);
+                }
+            }
+            .iframe-film {
+                iframe {
+                    width: 100%;
+                    height: 300px;
+                    border: none;
+                    box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.466);
+                }
+            }
+            .infos-film {
+                margin: 0;
+                .infos {
+                    margin-bottom: 15px;
+                    font-family: "Raleway-SB";
+                    .bold {
+                        font-family: "Roboto-M-B";
+                        color: $blue;
+                    }
+                    .link-movie {
+                        text-decoration: none;
+                        color: $purple;
+                    }
+                }
+                a {
+                    text-decoration: none;
+                    color: $purple;
+                }
+            }
+        }
+    }
+}

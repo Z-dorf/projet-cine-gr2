@@ -17,6 +17,11 @@ if (isset($_GET['action'])){
 
     break;
 
+    case 'fiche-real':
+    require_once('controleur/real.php');
+
+    break;
+
     default:
 
     require_once('error.html');

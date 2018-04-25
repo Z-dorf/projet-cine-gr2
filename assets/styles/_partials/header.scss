@@ -1,20 +1,33 @@
-header {
-    background: url('../medias/background.png') $dark-grey;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: right;
-    padding: 15px 0;
+header {    
+    background-image: url('../medias/footer_lodyas.png');
+    width : 100%;
+    height :105px;
+    background-color: $dark-grey;
+
     box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.466);
     margin-bottom: 35px;
-    h1 {
-        font-family: "Roboto-M-B";
-        color: $light-grey;
-        font-size: 20px;
-        display: inline-block;
-        .h1-color {
-            color: $blue;
-            text-transform: uppercase;
-            font-size: 10px;
+    .wrap-header {
+        display : flex;
+        padding : 30px 0;
+        .img-header{
+            width : 30px;
+            img{
+                width : 100%;
+                height :auto;
+            }
+        }
+        h1 {
+            font-family: "Roboto-M-B";
+            color: $light-grey;
+            font-size: 20px;
+            display: inline-block;
+            padding-left : 25px;
+            margin: auto 0;
+            .h1-color {
+                color: $blue;
+                text-transform: uppercase;
+                font-size: 15px;
+            }
         }
     }
 }

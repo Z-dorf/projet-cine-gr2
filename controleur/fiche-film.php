@@ -19,4 +19,4 @@ $template = $twig->load('fiche-film.html');
 
 echo $template->render(array('movie' => $movie));
 
-?>
+?> 

@@ -8,15 +8,15 @@ $twig = new Twig_Environment($loader,[
 
  ]);
 
-// require_once ('model/model.php');
+require_once ('model/model.php');
 
-// $id_filmSeul = $_GET['id'];
+$id_RealSeul = $_GET['id'];
 
-// $movie = getMovie($id_filmSeul);
+$real = getReal($id_RealSeul);
 
 //faire le render transmettre la vue au traitement
-$template = $twig->load('error.html');
+$template = $twig->load('fiche-real.html');
 
-echo $template->render(array());
+echo $template->render(array('real' => $real));
 
-?> 
+?>
