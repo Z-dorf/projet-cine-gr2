@@ -34,7 +34,7 @@
                     <br>
                     {% for films in real.films %}
 
-                        <a href="index.php?action=fiche-film&id={{ real.id_f }}" class="link-movie">
+                        <a href="fiche-film/{{ real.id_f }}" class="link-movie">
                             {{ films.titre_f | convert_encoding('UTF-8', 'ISO-8859-1') }}</a><br>
 
                     {% endfor %}

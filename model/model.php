@@ -52,8 +52,7 @@ function getMovie($id_film){
         'realisateur' => utf8_encode(getRealById($movie['id_f'])),
         'image' => 'assets/medias/film_'.$id_film.'.jpg',
         'id_r' => $movie['id_r'],
-        'iframe' => $movie['iframe'],
-        'bande' => 'assets/medias/bande_'.$id_film.'.jpg'
+        'iframe' => $movie['iframe']
     ];
 
     return $arrayMovie;
