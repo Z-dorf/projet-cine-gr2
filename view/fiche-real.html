@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<h3>
+    Kicécé ?
+</h3>
+
+
+<h4> {{ filmReal.prenom }} {{ filmReal.nom }} </h4>
+
+<h3>Kékilafé?</h3>
+
+<h2>Filmographie </h2>
+
+
+  {% for films in filmReal.films %}
+        <li> {{ films.titre_f }} </li>
+        
+    {% endfor %}
+{% endblock %}

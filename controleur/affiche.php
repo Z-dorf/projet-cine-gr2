@@ -17,6 +17,6 @@ $template = $twig->load('affiche.html');
 
 echo $template->render(array('movies' => $movies));
 
-var_dump ($movies);
+// var_dump ($movies);
 
 ?>

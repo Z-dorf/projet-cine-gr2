@@ -1,11 +1,4 @@
 {
-    "name": "test/twig",
-    "authors": [
-        {
-            "name": "Chap-z",
-            "email": "cha.lacroix@hotmail.Fr"
-        }
-    ],
     "require": {
         "twig/twig": "^2.0"
     }

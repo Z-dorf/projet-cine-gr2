@@ -14,7 +14,14 @@ if (isset($_GET['action'])){
 
     case 'fiche-film':
     require_once('controleur/fiche-film.php');
+    break;
 
+    case 'fiche-real':
+    require_once('controleur/fiche-real.php');
+    break;
+
+    case 'fiche-acteur':
+    require_once('controleur/fiche-acteur.php');
     break;
 
     default:
