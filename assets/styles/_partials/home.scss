@@ -1,17 +1,26 @@
 body {
-    .wrap-home {
-        padding : 50px 50px 20px 50px;
-        background-color : $light-grey;
-        box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.466);
 
+    .wrap-home {
+
+        padding: 50px 50px 20px 50px;
+
+        h2 {
+            font-family: "Raleway-SB";
+            color: $dark-grey;
+            font-size: 20px;
+            padding-left: 10px;
+            margin: auto 0;
+            text-shadow: .04em .04em 0 #9cb8b3;
+        }
         .ul-home {
+            margin-top : 40px;
             list-style: none;
             display: flex;
             flex-wrap: wrap;
             padding: 0;
             .wrap-list {
-
-                opacity: 0.7;
+                margin : 0;
+                opacity: 0.8;
                 transition: all .8s;
                 &:hover {
                     opacity: 1;
@@ -21,6 +30,7 @@ body {
                     img {
                         width: 100%;
                         max-height: auto;
+                        border : 8px solid $blue;
                         box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.466);
                     }
                 }
@@ -40,15 +50,14 @@ body {
                     }
                 }
                 .button {
-                    margin : 10px 0 40px 0;
+                    margin: 10px 0 40px 0;
                     a {
-
-                        padding : 3px 10px;
+                        padding: 3px 10px;
                         text-decoration: none;
                         font-family: "Roboto-M-L";
                         font-size: 12px;
                         color: $light-grey;
-                        background-color: $blue;
+                        background-color: $purple;
                         text-align: right;
                     }
                 }

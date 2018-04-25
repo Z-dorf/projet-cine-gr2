@@ -28,8 +28,8 @@ function getMovies(){
             'genre' => utf8_encode(getGenreById($row['id_f'])),
             'acteur' => utf8_encode(getActeurById($row['id_f'])),
             'realisateur' => utf8_encode(getRealById($row['id_f'])),
-            'filmsByReal' => utf8_encode(getFilmByReal($row['id_f'])),
-            'image' => 'assets/medias/film_'.$row["id_f"].'.jpg',
+            'image' => 'assets/medias/film_'.$row["id_f"].'.jpg'
+
         ];
  
     }
@@ -42,7 +42,7 @@ function getMovie($id_film){
 
     global $dbo;
 
-    $stm = $dbo->prepare('SELECT titre_f, id_f, description_f, id_r, annee_f FROM films, realisateurs WHERE id_f = :id_film');            
+    $stm = $dbo->prepare('SELECT titre_f, id_f, description_f, annee_f, id_r, iframe FROM films, realisateurs WHERE id_f = :id_film and id_f = id_r');            
     $stm->bindParam(':id_film', $id_film);
     $stm->execute();
     $movie = $stm->fetch();
@@ -53,15 +53,17 @@ function getMovie($id_film){
         'id_f' => $movie['id_f'],
         'id_r' => $movie['id_r'],
         'description' => utf8_encode($movie['description_f']),
-        'annee' => utf8_encode($movie['annee_f']),
+        'annee' => $movie['annee_f'],
         'genre' => utf8_encode(getGenreById($movie['id_f'])),
         'acteur' => utf8_encode(getActeurById($movie['id_f'])),
         'realisateur' => utf8_encode(getRealById($movie['id_f'])),
-        'filmsByReal' => (getFilmByReal($movie['id_f'])),
-        'image' => 'assets/medias/film_'.$id_film.'.jpg'
+        'image' => 'assets/medias/film_'.$id_film.'.jpg',
+        'id_r' => $movie['id_r'],
+        'iframe' => $movie['iframe']
     ];
 
     return $arrayMovie;
+
 
 }
 
@@ -130,16 +132,42 @@ function getReal($getFilmByReal){
 
 
 
-function getFilmByReal($getFilmByReal){
-    // echo ($id_Real);
+function getReal($id_real){
+    
     global $dbo;
 
-    $stfbr = $dbo->prepare('SELECT titre_f, id_f FROM films f INNER JOIN liaison_r_f lrf ON lrf.id_film = f.id_f WHERE lrf.id_realisateur = :id_r');
-    $stfbr->bindParam(':id_r', $getFilmByReal);
-    $stfbr->execute();
-    $filmsReal = $stfbr->fetchAll();
+    $stgt = $dbo->prepare('SELECT prenom_r, nom_r, id_r, nationalite, date_naissance, age, id_f FROM realisateurs, films WHERE id_r = :id_real and id_f = id_r');            
+    $stgt->bindParam(':id_real', $id_real);
+    $stgt->execute();
+    $real = $stgt->fetch();
+
+    $arrayReal = [
+        'prenom' => utf8_encode($real['prenom_r']),
+        'nom' => utf8_encode($real['nom_r']),
+        'nationnalite' => utf8_encode($real['nationalite']),
+        'naissance' => utf8_encode($real['date_naissance']),
+        'age' => utf8_encode($real['age']),
+        'id_r' => $real['id_r'],
+        'id_f' => $real['id_f'],
+        'films' => getFilmReal($real['id_r']),
+        'image' => 'assets/medias/real_'.$id_real.'.jpg'
+    ];
+
+    return $arrayReal;
+}
+
+function getFilmReal($id_real){
+
+    global $dbo;
+
+    $stfr = $dbo->prepare('SELECT titre_f, id_f FROM films f INNER JOIN liaison_r_f lrf ON lrf.id_film = f.id_f WHERE lrf.id_realisateur = :id_real');            
+    $stfr->bindParam(':id_real', $id_real);
+    $stfr->execute();
+    $filmsReal = $stfr->fetchAll();
 
     return $filmsReal;
+
 }
+
 
 ?>

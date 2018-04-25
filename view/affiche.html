@@ -1,34 +1,28 @@
 {% extends 'layout.html' %}
-{% block head %}
 
-    <h1>Allo-ciné is
-        <span class="h1-color">in da place</span>
-    </h1>
-
-{% endblock %}
 {% block content %}
     <section class="row wrap-home">
+        <h2>Liste de films choisis par nos soins</h2>
         <ul class="ul-home">
             {% for movie in movies %}
                 <div class="col s6 col m4  col l3 wrap-list">
                     <div class="img-movie-home">
-                        <a href="index.php?action=fiche-film&id={{ movie.id_f }}">
+                        <a href="fiche-film/{{ movie.id_f }}">
                             <img src="{{ movie.image }}">
                         </a>
                     </div>
                     <div class="links">
                         <li class="movie-title">
-                            <a href="index.php?action=fiche-film&id={{ movie.id_f }}">
+                            <a href="fiche-film/{{ movie.id_f }}">
                                 {{ movie.titre }}</a>
                         </li>
                         <li class="button">
-                            <a href="index.php?action=fiche-film&id={{ movie.id_f }}">en savoir +</a>
+                            <a href="fiche-film/{{ movie.id_f }}">en savoir +</a>
                         </li>
-                    </p>
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
-
-    </ul>
-</section>
+            {% endfor %}
+        </ul>
+    </section>
 {% endblock %}
+{# <a href="fiche-film/{{ movie.id_f }}">en savoir +</a> #}

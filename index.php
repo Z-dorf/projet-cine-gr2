@@ -24,6 +24,11 @@ if (isset($_GET['action'])){
     require_once('controleur/fiche-acteur.php');
     break;
 
+    case 'fiche-real':
+    require_once('controleur/real.php');
+
+    break;
+
     default:
 
     require_once('error.html');
