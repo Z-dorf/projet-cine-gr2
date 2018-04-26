@@ -1,12 +1,6 @@
 <?php 
-try
-{
-    $dbo = new PDO('mysql:host=localhost;dbname=project_cine', 'root', '');
-}
-catch (exeption $e)
-{
-    die ('Erreur : ' . $e->getMessage());
-}
+    $dbo = new PDO('mysql:host=127.0.0.1;dbname=allo_cine', 'root', 'root');
+
 function getMovies(){
     
    
@@ -51,7 +45,6 @@ function getMovie($id_film){
     $arrayMovie = [
         'titre' => utf8_encode($movie['titre_f']),
         'id_f' => $movie['id_f'],
-        'id_r' => $movie['id_r'],
         'description' => utf8_encode($movie['description_f']),
         'annee' => $movie['annee_f'],
         'genre' => utf8_encode(getGenreById($movie['id_f'])),
@@ -77,7 +70,7 @@ function getGenreById($id_film){
     $genres = $stg->fetch();
 
     return $genres['genre'];
- 
+
 }
 
 function getActeurById($id_film){
@@ -93,43 +86,18 @@ function getActeurById($id_film){
 
 }
 
-function getRealById($getFilmByReal){
-    // var_dump($getFilmByReal);
+function getRealById($id_film){
+
     global $dbo;
 
-    $str = $dbo->prepare('SELECT GROUP_CONCAT( CONCAT(prenom_r," ", nom_r)) as realisateur FROM realisateurs r INNER JOIN liaison_r_f lrf ON lrf.id_realisateur = r.id_r WHERE lrf.id_film = :id_r');            
-    $str->bindParam(':id_r', $getFilmByReal);
+    $str = $dbo->prepare('SELECT GROUP_CONCAT( CONCAT(prenom_r," ", nom_r)) as realisateur FROM realisateurs r INNER JOIN liaison_r_f lrf ON lrf.id_realisateur = r.id_r WHERE lrf.id_film = :id_film');            
+    $str->bindParam(':id_film', $id_film);
     $str->execute();
     $realisateurs = $str->fetch();
 
     return $realisateurs['realisateur'];
 
 }
-
-function getReal($getFilmByReal){
-    // echo ($getFilmByReal);
-    global $dbo;
-
-    $stgr = $dbo->prepare('SELECT prenom_r," ", nom_r, id_r, titre_f, id_f FROM realisateurs, films WHERE realisateurs.id_r = :id_r');
-    $stgr->bindParam(':id_r', $getFilmByReal);
-    $stgr->execute();
-    $real = $stgr->fetch();
-    //on boucle sur nos films
-    
-
-        // on stock dans un tableau le titre du film
-        $arrayReal = [
-            'prenom' => utf8_encode($real['prenom_r']), 
-            'nom' => utf8_encode($real['nom_r']), 
-            'films' => getFilmByReal($real['id_r']),
-            // 'titre' => getFilmByReal($real['titre_f'])
-        ];
- 
-    
-    
-    return $arrayReal;
-}
-
 
 
 function getReal($id_real){
